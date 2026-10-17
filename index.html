@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Random Quote Generator — a clean, responsive and accessible quote card built with HTML5, CSS3 and vanilla JavaScript. Veda Technology Web Development Internship Task 8." />
+  <title>Random Quote Generator | Veda Technology Internship Task 8</title>
+  <meta name="theme-color" content="#4338ca" />
+  <!-- Relative path, works offline and on GitHub Pages -->
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- Soft decorative background blobs (hidden from assistive technology) -->
+  <div class="backdrop" aria-hidden="true">
+    <span class="blob blob-one"></span>
+    <span class="blob blob-two"></span>
+  </div>
+
+  <div class="page">
+    <header class="header">
+      <p class="eyebrow">Veda Technology &bull; Internship &bull; Task 8</p>
+      <h1>Random Quote Generator</h1>
+      <p class="subtitle">One click, a fresh thought &mdash; copy it or share it.</p>
+    </header>
+
+    <main>
+      <!-- ============ Quote card ============ -->
+      <section class="card quote-card" id="quoteCard" aria-labelledby="quoteHeading">
+        <h2 class="visually-hidden" id="quoteHeading">Current quote</h2>
+
+        <!--
+          This stage is the accessible live region. Quote text, author and
+          category all live inside it, so they are announced together
+          (aria-atomic) whenever a new quote appears.
+        -->
+        <div class="quote-stage" id="quoteStage" aria-live="polite" aria-atomic="true">
+          <svg class="quote-mark" viewBox="0 0 48 32" width="64" height="43" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 32V18.4C0 8.3 6.7 1.1 17.3 0l1.9 5.2c-6.4 1.6-9.9 5.3-10.4 10.5H19V32H0zm28 0V18.4C28 8.3 34.7 1.1 45.3 0l1.9 5.2c-6.4 1.6-9.9 5.3-10.4 10.5H47V32H28z"/>
+          </svg>
+
+          <blockquote class="quote">
+            <p class="quote-text" id="quoteText">Loading a quote&hellip;</p>
+            <footer class="quote-author" id="quoteAuthor">&mdash;</footer>
+          </blockquote>
+
+          <p class="quote-category" id="quoteCategory" data-category="Loading">Loading</p>
+        </div>
+
+        <!-- Action buttons: native <button> so Enter and Space work for free -->
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="newQuoteBtn">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M21 12a9 9 0 1 1-2.64-6.36M21 4v5h-5"/>
+            </svg>
+            <span>New Quote</span>
+          </button>
+
+          <button type="button" class="btn btn-secondary" id="copyBtn">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M9 9h10v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V11a2 2 0 0 1 2-2Zm-4 6H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span>Copy Quote</span>
+          </button>
+
+          <button type="button" class="btn btn-secondary" id="shareBtn">
+            <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7M12 16V3m0 0L8 7m4-4 4 4"/>
+            </svg>
+            <span>Share Quote</span>
+          </button>
+        </div>
+
+        <!-- Feedback / errors for copy and share -->
+        <p class="feedback" id="feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+
+        <p class="hint">
+          Keyboard shortcut: press <kbd>N</kbd> for a new quote, <kbd>C</kbd> to copy.
+        </p>
+      </section>
+
+      <!-- ============ How it works ============ -->
+      <section class="card info-card" aria-labelledby="infoHeading">
+        <h2 id="infoHeading">How it works</h2>
+        <ul class="info-list">
+          <li><strong>Random pick</strong> &mdash; <code>Math.random()</code> selects one of the quotes at random.</li>
+          <li><strong>No immediate repeats</strong> &mdash; the quote on screen is excluded from the next draw.</li>
+          <li><strong>Copy</strong> &mdash; the Clipboard API is used when available, with a safe fallback.</li>
+          <li><strong>Share</strong> &mdash; the Web Share API opens a share sheet where supported.</li>
+          <li><strong>Offline</strong> &mdash; quotes are bundled in <code>script.js</code>; no external API or asset is used.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Veda Technology &bull; 45-Day Web Development Internship &bull; Task 8: Random Quote Generator</p>
+    </footer>
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
