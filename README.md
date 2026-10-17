@@ -21,9 +21,6 @@
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1200&color=1E293B&center=true&vCenter=true&width=640&lines=Click+New+Quote...%E2%9C%A8;One+click%2C+a+fresh+thought;No+backend+%E2%80%A2+No+build+%E2%80%A2+No+internet+needed" alt="Greeting typing animation" />
 </div>
 
-Random Quote Generator of **Abhishek Shahaji Jadhav** — Web Developer & first-year BCA student at VIIT, Baramati. Built with **HTML5 + CSS3 + Vanilla JavaScript**: no frameworks, no libraries, no quote API, no build step, and **zero external requests at runtime**.
-
-> **Internship attribution:** 45-day Web Development Internship at **Veda Technology** — Task 8: Random Quote Generator.
 
 <details>
 <summary><b>📖 Table of Contents (click to expand)</b></summary>
@@ -241,86 +238,6 @@ node --check script.js
 
 ---
 
-## 📝 My Approach
-
-1. **Read the brief first:** 20+ quotes with `text`/`author`/`category`, random pick, no immediate repeats, quote on load, copy with feedback, share with fallback, keyboard access, responsive fit, error handling, live regions, `textContent`, Web Share feature detection, no `eval()`/inline handlers/frameworks, offline-safe.
-2. **Built the structure:** semantic landmarks, one `h1` + subtitle, quote card with decorative quote mark, `blockquote` + `footer` for the author, category pill, three buttons, `role="status"` feedback line, and a short "How it works" card.
-3. **Styled mobile-up:** CSS custom properties for one token system (light gradient background, white card, indigo `#4338ca` primary), serif quote type, `clamp()` sizing, wrapping action row, 560 px and 380 px breakpoints, `prefers-reduced-motion` and `forced-colors` support.
-4. **Wrote honest JS:** an IIFE with `'use strict'`, a validated 35-quote array, `getRandomIndex(total, excludeIndex)` for repeat prevention, `textContent`-only DOM writes, `getRandomIndex` guarded for the single-quote case, and async clipboard/share with three layered fallbacks.
-5. **Tested honestly:** 69 executed Node assertions against the real `script.js` (stubbed DOM) **plus** 48 checks driven through real headless Microsoft Edge over the DevTools Protocol — including 5 000 draws with zero repeats, 300 real button clicks, Enter/Space activation, `:focus-visible` ring rendering, favicon loading, four viewport widths, and screenshots captured at 1280×900 and 390×844.
-
----
-
-## ✅ Outcome
-
-A complete, responsive, dependency-free Random Quote Generator: 35 hand-picked quotations across 8 categories, zero immediate repeats across 5 000 verified draws, instant first quote, copy and share with layered fallbacks and honest user-facing messages, full keyboard operation, no console errors, and a verified-offline design with no external requests.
-
----
-
-## 🌐 Deployment
-
-**GitHub Pages:**
-
-```powershell
-Set-Location "<path-to>\internship-task-8"
-git init -b main
-git add index.html style.css script.js README.md Veda_Technology_Task_8_Project_Report.docx assets
-git commit -m "Task 8: Random Quote Generator (HTML + CSS + JS)"
-git remote add origin <your-repository-url>
-git push -u origin main
-```
-
-Then GitHub → **Settings → Pages → Deploy from a branch → `main` / root** → GitHub shows your live URL.
-
-> Keep `index.html`, `style.css`, `script.js`, and `assets/` together with relative links so Pages resolves them correctly. The repository URL above is a placeholder — replace it with your real repo. Do not push unless you intend to submit; the commands are provided for the submission step only.
-
-**Vercel:**
-
-1. Push the project to GitHub.
-2. Go to <https://vercel.com> → **Add New → Project** → import the repository.
-3. Set the **Root Directory** to `internship-task-8` (if the repo holds all internship tasks).
-4. Framework preset: **Other**. No build command, no output directory.
-5. Deploy.
-
----
-
-## 🧪 Testing Checklist
-
-**Real browser — Microsoft Edge 155 (headless, DevTools Protocol): 48 / 48 passed**
-
-- [x] Page loads from `file://`; `style.css` applies and `script.js` executes.
-- [x] A valid quote (text + author + category) is on screen at load.
-- [x] `aria-live="polite"` + `aria-atomic="true"` on the quote region, `role="status"` on feedback.
-- [x] All 8 category badges render in their own colours.
-- [x] 300 real clicks on **New Quote** → **0** immediate repeats; text, author, category stayed in sync every time.
-- [x] All 35 quotes were reached by clicking.
-- [x] **Copy Quote** → *"Quote copied to clipboard."*
-- [x] **Share Quote** in headless Edge → share sheet unavailable, so the clipboard fallback ran and reported it.
-- [x] `Enter` and `Space` both activate the focused button.
-- [x] `Tab` reaches the buttons; the focused element matches `:focus-visible` and draws the ring (`box-shadow: #ffffff 0 0 0 3px, #4338ca 0 0 0 6px`).
-- [x] No horizontal scroll at 1280 / 820 / 375 / 320 px; all buttons inside the viewport; touch targets ≥ 50 px.
-- [x] `prefers-reduced-motion: reduce` collapses animation to ~0 s.
-- [x] No uncaught exceptions, no console errors, no failed resource loads (index/style/script/favicon).
-- [x] Favicon link points at the local `./assets/favicon.svg` and the SVG loads as a valid 150×150 image.
-
-**Logic suite — Node.js 24 (real `script.js`, stubbed DOM): 69 / 69 passed**
-
-- [x] 35 quotes; every entry has non-empty `text`, `author`, `category`, and only those 3 keys.
-- [x] No duplicate quote text; no `undefined`/`null` can reach the UI.
-- [x] 5 000 consecutive draws → **0** repeats; all 35 quotes reachable.
-- [x] Single-quote dataset renders without an infinite loop.
-- [x] Malformed entries are skipped and warned about, not rendered.
-- [x] Copy writes exactly `"quote" — author`; falls back to `execCommand` when the Clipboard API rejects or is missing; reports an error when both fail.
-- [x] Share calls `navigator.share` with title, text, and category; cancelled sheet → *"Sharing cancelled."*; share error → clipboard fallback; no API → clipboard; `file://` URL never shared.
-- [x] `N` / `C` shortcuts work; `Ctrl`/`Meta` combos and typing in fields are ignored.
-- [x] No `eval()`, no `new Function()`, no `innerHTML`, no inline `onclick`; every `getElementById` target exists in the HTML.
-- [x] `node --check script.js` passes.
-- [x] The `.docx` project report opens in Microsoft Word (7 pages, 1 986 words) and mirrors the Task 5 report structure.
-
-**Not verified here:** reading the system clipboard back (headless Edge denies `clipboard-read`) and the visual share sheet — both need an interactive desktop browser session.
-
----
-
 ## 📜 JavaScript Concepts
 
 | Concept | Where |
@@ -343,37 +260,6 @@ Then GitHub → **Settings → Pages → Deploy from a branch → `main` / root*
 | Timing | auto-clearing feedback message via `setTimeout` / `clearTimeout` |
 | IIFE + strict mode | `'use strict'` wrapper keeps scope clean; `window.quoteApp` exposed for console testing |
 
----
-
-## 📸 Screenshots
-
-**Desktop — 1280 × 900**
-
-![Random Quote Generator desktop screenshot](./assets/screenshot-desktop.png)
-
-**Mobile — 390 × 844**
-
-![Random Quote Generator mobile screenshot](./assets/screenshot-mobile.png)
-
----
-
-## ⚠️ Limitations
-
-- **Single random pick per click** — no category filter, search, favourites, or history list; out of scope for Task 8.
-- Quotes are a fixed local set of 35 — new quotes require editing `script.js`.
-- The Web Share API is only exposed by some mobile browsers; desktops get the clipboard fallback by design.
-- `document.execCommand('copy')` is deprecated but retained purely as a fallback for `file://` usage.
-- No data is stored or sent anywhere — everything runs locally in the browser.
-
----
-
-## 🔍 Accuracy Notes
-
-- Every test result quoted above came from suites actually executed against these files — no invented numbers.
-- Three initial failures during testing were traced to bugs in my own test harness (shared stub DOM, focus ring drawn with `box-shadow` not `outline`, and Space needing a `keyup` event), not in the app; the harness was corrected and both suites then passed clean.
-- Quotations are attributed to their original authors; uncertain attributions are labelled **Anonymous** rather than invented.
-- Skills are presented as *learning/using* at internship level.
-- App makes zero external requests; README badges/animations are documentation-only.
 
 ---
 
